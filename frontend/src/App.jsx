@@ -1,33 +1,15 @@
-
-import { useEffect, useState } from 'react'
 import './App.css'
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import HomePage from './pages/HomePage'
+function App() { 
 
-function App() {
-    const [data, setData] = useState([])
-    useEffect(() => {
-
-      const fetchUser = async () => {
-        const res = await fetch("/api/users", {credentials: "include"})
-        const users = await res.json();
-        setData(users);
-      }
-      fetchUser();
-    },[])
-
-    console.log(data);
-    
-  return (
-    <>
-      <h1>hello </h1>
-      <ul>
-         {data.map((user, i) => (
-          <li key={i}>
-            {user.name}
-          </li>
-         ))}
-      </ul>
-    </>
-  )
+  const router = createBrowserRouter([
+     {
+      path: '/',
+      element: <HomePage />
+     }
+  ])
+  return <RouterProvider router={router} />
 }
 
 export default App
