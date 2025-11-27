@@ -1,1 +1,112 @@
 
+@import "tailwindcss";
+
+/* theme 1*/
+
+/* body {
+  background-color: #FFFCE1;
+} */
+
+* {
+  box-sizing: border-box;
+}
+
+@theme {
+
+    /*Brand Colors */
+    --color-primary: #000000;
+    --color--Primary-dark: #FFFFFF;
+    --color-secondary: #D8D8D8;
+    --color-accent: #90D5FF;  
+    --color-surface: #F9FAFB;
+    --color-neutral: #F4F4F4;
+    --color-accent2: #00B2FF;
+    --color-accent3: #B593FF;
+    --color-accent4: #D8D8D8;
+
+
+    /* 🔤 Typography */
+
+    --font-heading: "Urbanist";
+    --font-sans: "Noto Sans";
+
+
+    --text-mediumNormal: 18px;
+    --text-regularNormal: 16px;
+    --text-mainHeading: 66px;
+    --text-h2: 52px;
+    --text-h3: 44px;
+    --text-h4: 36px;
+    --text-h5: 28px;
+    --text-h6: 22px;
+
+    --radius-btn: 12px;
+    --radius-section: 32px;
+    --radius-card: 8px;
+
+   --breakpoint-myPoint: 1400px
+
+    
+}
+
+
+
+@layer base {
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+}
+
+  h1 {
+    font-size: var(--text-mainHeading);
+  }
+  h2 {
+    font-size: var(--text-h2);
+  }
+  h3 {
+    font-size: var(--text-h3);
+  }
+  h4 {
+    font-size: var(--text-h4);
+  }
+  h5 {
+    font-size: var(--text-h5);
+  }
+  h6 {
+    font-size: var(--text-h6);
+  }
+  a {
+    color: var(--color-blue-600);
+    text-decoration-line: underline;
+  }
+
+  li {
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+}
+
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+.infinite {
+  /* Set the duration of the scroll. Adjust 25s for speed (lower = faster) */
+  animation-duration: 30s; 
+  /* Run the animation indefinitely */
+  animation-iteration-count: infinite;
+  /* Use the keyframes we defined */
+  animation-name: scroll-left; 
+  /* Define the timing function (liner) */
+  animation-timing-function: linear; 
+}
+
