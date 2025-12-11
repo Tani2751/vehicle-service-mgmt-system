@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP} from "@gsap/react";
 
-
 export function DesktopDropdown({ menu, i }) {
     const [isOpen, setIsOpen] = useState(false);
     // const [isHovering, setIsHovering] = useState(false);
@@ -91,7 +90,7 @@ export function DesktopDropdown({ menu, i }) {
         onKeyDown={handleKeyDown}        
         aria-haspopup="true" // Tells screen readers it controls a popup
         aria-expanded={isOpen} // Tells screen readers the current state
-        className="cursor-pointer text-regularNormal py-2 flex items-center gap-1 font-heading font-semibold text-white">
+        className="cursor-pointer text-regularNormal py-2 flex items-center gap-1 font-heading font-semibold text-black">
         {menu.name}
         {hasSubMenu && (
           <svg
@@ -198,7 +197,7 @@ export function DesktopDropdown({ menu, i }) {
                   :
                   (
                     <a 
-                        href={subMenu.url || "#"}
+                        to="/plans"
                         role="menuitem"
                         onKeyDown={handleKeyDown} 
                         className="no-underline p-4 flex flex-col items-center lg:items-end">
