@@ -94,7 +94,7 @@ export function ProcessSection() {
         <div ref={videoRef} className="relative w-full h-screen opacity-0">
           <video
             className="w-full h-full object-cover rounded-[32px]"
-            src="src/assets/videos/process_video.mp4"
+            src="https://res.cloudinary.com/duxgfwaef/video/upload/v1765632966/Two_Wheeler_Servicing_Video_Generated_r9poab.mp4"
             autoPlay
             muted
             playsInline
@@ -107,7 +107,7 @@ export function ProcessSection() {
 
         {/* TEXT OVER VIDEO */}
         <div className="absolute inset-0 flex flex-col items-center justify-center px-2">
-          <h className="font-heading rounded-xl bg-orange-400 text-white px-2 py-0.5">Process</h>
+          <h6 className="font-heading rounded-xl bg-orange-400 text-white px-2 py-0.5">Process</h6>
           <h2 ref={headingRef} className=" text-nowrap lg:text-7xl text-white font-bold mt-6">How bike service works</h2>
           <p className=" text-center text-h6 text-white mt-4">Simple steps to get your two-wheeler serviced quickly</p>
           <Button name="Book Now" color="primary" textColor="white" />
@@ -126,13 +126,13 @@ export function ProcessSection() {
               <div   
                   key={i} 
                   ref={(el) => itemsRef.current[i] = el}
-                  className="p-4 max-w-[390px] md:max-w-[500px] bg-orange-400/70 backdrop-blur-lg rounded-2xl inline-flex flex-col items-center justify-center gap-4">
+                  className="p-4 max-w-[390px] md:max-w-[500px] bg-white backdrop-blur-lg rounded-2xl inline-flex flex-col items-center justify-center gap-4">
 
-                <div className="flex items-baseline p-2">
+                <div className="flex items-baseline p-2 text-orange-400">
                   {pro.icon}
                 </div>
                 <div className="w-3/3 mt-4">
-                  <h3 className="text-2xl md:text-h6 font-semibold lg:text-h5 px-2 inline">
+                  <h3 className="text-2xl  md:text-h6 font-semibold lg:text-h5 px-2 inline">
                       {pro.heading}
                   </h3>
                     <p className="font-sans text-[14px] md:text-[14px] mt-2 lg:text-regularNormal ml-6">

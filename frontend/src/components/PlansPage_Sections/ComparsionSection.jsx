@@ -7,7 +7,7 @@ export function ComparsionSection() {
     return (
         <section className="min-h-screen mt-60 w-full p-8">
                 <h2 className=" text-h3 font-bold text-center mb-10">
-                    Compare what each plans covers
+                   <span className="text-orange-400">Compare</span> what each plans covers
                 </h2>
                 <div className="overflow-x-auto mt-20 mx-10" >
                     <table className="w-full text-left border-collapse">

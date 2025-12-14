@@ -14,18 +14,18 @@ export function PricingSection() {
                 <span className="font-heading font-semibold rounded-xl bg-orange-400 text-white px-2 py-0.5">
                     Plans
                 </span>
-                <h1 className="font-bold text-4xl md:text-5xl mt-4">Pick your plan</h1>
+                <h1 className="font-bold text-h2 md:text-h1 mt-4">Pick your plan</h1>
                 <p className="text-[14px] md:text-regularNormal font-sans mt-4">
                     Choose the plan that fits your riding style and budget
                 </p>
             </div>
             {/* pricing section */}
-            <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-16 m-6">
+            <section id="pricing" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-16 m-6">
                     {pricingPlans.map((plan, index) => (
                         <div
                             key={index}
                             ref={cardRef}
-                            className=" p-4 m-6 rounded-2xl shadow-2xl border-gray-50 "
+                            className=" p-4 m-6 rounded-2xl shadow-2xl shadow-orange-400 bg-gray-200/40"
                         >
                             <div className="p-4 flex flex-col ">
                                 <h3 className="font-semibold mb-4 text-h6 md:text-h5">{plan.title}</h3>

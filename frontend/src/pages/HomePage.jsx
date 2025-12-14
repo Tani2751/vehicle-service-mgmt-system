@@ -11,6 +11,8 @@ import { ProcessSection } from "../components/HomePage_Section/ProcessSection";
 import TestimonialSection from "../components/HomePage_Section/TestimonialSection";
 import FAQSection from "../components/HomePage_Section/FAQSection";
 import { FooterSection } from "../components/HomePage_Section/FooterSection";
+import { NavLink } from "react-router-dom";
+import AppleStyleCarousel from "../components/AppleStyleCarousel";
 
 
 
@@ -77,17 +79,17 @@ function HomePage() {
             clipPath: "inset(0 100% 0 0)", // Completely hidden from the right
         });
 
-        tl.fromTo(
-            landingRef.current,
-            { scaleY: 0, opacity: 0, transformOrigin: 'top center' },
-            { 
-                scaleY: 1, 
-                opacity: 1, 
-                duration: 2.0,
-                ease: "power4.out"
-            },
-            0
-        ) 
+        // tl.fromTo(
+        //     landingRef.current,
+        //     { scale: 0, opacity: 0, transformOrigin: ' center' },
+        //     { 
+        //         scale: 1, 
+        //         opacity: 1, 
+        //         duration: 2.0,
+        //         ease: "power4.out"
+        //     },
+        //     0
+        // ) 
         
         // tl.fromTo(
         //         contentRef.current,
@@ -237,33 +239,33 @@ function HomePage() {
                 }
             )
 
-            gsap.fromTo(serviceRef3.current.section, 
-                { scale: 0.85, opacity: 0},
-                {
-                    scale: 1,
-                    opacity: 1,
-                    scrollTrigger: {
-                        trigger: serviceRef3.current.section,
-                        start: "top bottom",
-                        end: "top center",
-                        scrub: true,
-                    },
-                    ease: "power2.out"
-                }
-            )
+            // gsap.fromTo(serviceRef3.current.section, 
+            //     { scale: 0.85, opacity: 0},
+            //     {
+            //         scale: 1,
+            //         opacity: 1,
+            //         scrollTrigger: {
+            //             trigger: serviceRef3.current.section,
+            //             start: "top bottom",
+            //             end: "top center",
+            //             scrub: true,
+            //         },
+            //         ease: "power2.out"
+            //     }
+            // )
 
 
-            gsap.from([serviceRef3.current.heading, serviceRef3.current.subHeading], {
-                opacity: 0,
-                y: 40,
-                duration: 0.8,
-                stagger: 0.2,
-                ease: "power3.out",
-                scrollTrigger: {
-                trigger: section2Ref.current,
-                start: "top 35%",
-                },
-            });
+            // gsap.from([serviceRef3.current.heading, serviceRef3.current.subHeading], {
+            //     opacity: 0,
+            //     y: 40,
+            //     duration: 0.8,
+            //     stagger: 0.2,
+            //     ease: "power3.out",
+            //     scrollTrigger: {
+            //     trigger: section2Ref.current,
+            //     start: "top 35%",
+            //     },
+            // });
 
             
         }, section2Ref);
@@ -282,7 +284,7 @@ function HomePage() {
 
                     <main>
                         <section ref={landingRef} className="min-h-screen  bg-cover  bg-center flex flex-col justify-end items-center overflow-hidden"
-                            style={{ backgroundImage: `url("/src/assets/garage.jpg")` }}
+                            style={{ backgroundImage: `url("https://res.cloudinary.com/duxgfwaef/image/upload/v1765632714/Gemini_Generated_Image_tj7lnitj7lnitj7l_-_Copy_sveixq.jpg")` }}
                         >   
                             {/* overlay */}
                             <div className="fixed inset-0 bg-black/20 backdrop-blur-xs z-10 "/>
@@ -355,9 +357,9 @@ function HomePage() {
                                 className="bg-[#F2F1F3] w-356 flex flex-col items-center justify-center p-6 rounded-[32px]">
 
                                 <div className="flex flex-col items-center justify-center">
-                                    <h className="font-heading rounded-xl bg-orange-400 tracking-wide text-white px-2 py-0.5 font-semibold">
+                                    <p className="font-heading rounded-xl bg-orange-400 tracking-wide text-white px-2 py-0.5 font-semibold">
                                     Benefits
-                                    </h>
+                                    </p>
                                     <h2  ref={titleRef} className="text-center text-h4 lg:text-h2 font-bold font-heading leading-10 lg:leading-14 mt-6">
                                         Why riders trust MotoCare for bike maintenance ?
                                     </h2>
@@ -415,9 +417,9 @@ function HomePage() {
 
                 </div>
             </div>
-        </>
 
-        
+
+        </>
     )
 }
 

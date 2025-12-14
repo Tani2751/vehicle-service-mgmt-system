@@ -4,6 +4,7 @@ import { MobileDropdown } from "./mobileDropdown";
 import { DesktopDropdown } from "./desktopDropdown";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { NavLink } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -84,9 +85,9 @@ useEffect(() => {
     <>
     <header ref={ref} className="z-130 flex items-center justify-between fixed top-10 left-10 right-10 md:left-10 md:right-10 lg:left:30 lg:right-30 2xl:left-100 2xl:right-100 shadow-2xl  bg-orange-400/10  backdrop-blur-lg rounded-2xl  px-6 ">
         {/* Logo: change path or import as needed */}
-        <a href="/" aria-label="Go to Homepage">
+        <NavLink  to={"/"} aria-label="Go to Homepage">
           <img src="/src/assets/logo.svg" alt="Company logo" className="w-40" />
-        </a>
+        </NavLink >
         <div className="flex items-center">
             <nav className="opacity-0 invisible lg:opacity-100 lg:visible right-10 absolute md:static transition-all duration-300 ">
                   <ul className="flex items-center gap-8 cursor-pointer">

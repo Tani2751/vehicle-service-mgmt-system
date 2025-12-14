@@ -8,9 +8,6 @@ body {
   overflow-x: hidden;
 }
 
-.will-change-transform {
-  will-change: transform;
-}
 
 * {
   box-sizing: border-box;
@@ -107,7 +104,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .infinite {
   /* Set the duration of the scroll. Adjust 25s for speed (lower = faster) */
-  animation-duration: 30s; 
+  animation-duration: 60s; 
   /* Run the animation indefinitely */
   animation-iteration-count: infinite;
   /* Use the keyframes we defined */
@@ -130,7 +127,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .infiniteRight {
   /* Set the duration of the scroll. Adjust 25s for speed (lower = faster) */
-  animation-duration: 30s; 
+  animation-duration: 60s; 
   /* Run the animation indefinitely */
   animation-iteration-count: infinite;
   /* Use the keyframes we defined */

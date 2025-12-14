@@ -2,6 +2,7 @@ import './App.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import HomePage from './pages/HomePage'
 import { PlansPage } from './pages/PlansPage'
+import AppleStyleCarousel from './components/AppleStyleCarousel'
 
 
 
@@ -15,6 +16,10 @@ function App() {
      {
       path: "/plans",
       element: <PlansPage />
+     },
+     {
+      path:"/test",
+      element: <AppleStyleCarousel />
      }
 
   ])

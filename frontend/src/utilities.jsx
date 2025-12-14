@@ -8,74 +8,78 @@ import { CalendarDays, ClipboardCheck, SearchCheck, Wrench, ShieldCheck, Handsha
 export const menus = [
     {
         name: "Services",
-        heading:"Comprehensive bike care solutions",
-        subMenuHeadings: ["Regular / Periodic Maintenance Services", "Repair / Issue-Based Services", "Optional / Custom Add-ons", "Pick-Up & Drop Service", "Roadside Assistance", "Loyalty Points", "Service Booking", "Customer Portal"],
-        subMenus: [
-            {
-                name: "Regular / Periodic Services",
-                color: "#00B2FF",
-                image: "/src/assets/wrench.png",
+        link: "/#pricing"
+        // heading:"Comprehensive bike care solutions",
+        // subMenuHeadings: ["Regular / Periodic Maintenance Services", "Repair / Issue-Based Services", "Optional / Custom Add-ons", "Pick-Up & Drop Service", "Roadside Assistance", "Loyalty Points", "Service Booking", "Customer Portal"],
+        // subMenus: [
+        //     {
+        //         name: "Regular / Periodic Services",
+        //         color: "#00B2FF",
+        //         image: "/src/assets/wrench.png",
                 
-            },
-            {
-                name: "Repair / Issue-Based Services",
-                image: "/src/assets/screwdriverman.png",
-                color: "#B593FF",
+        //     },
+        //     {
+        //         name: "Repair / Issue-Based Services",
+        //         image: "/src/assets/screwdriverman.png",
+        //         color: "#B593FF",
 
-            },
-            {
-                name: "Optional / Custom Add-ons",
-                image: "/src/assets/add-on.png",
-                color: "#F2F1F3",
-                text: "#B593FF",
-            },
-            {
-                text: "#B593FF",
-                otherfeatures: [
-                    {
-                    name: "Pick-Up & Drop Service",
-                    subHeading: "a rider picks up and delivers the vehicle after servicing",
-                    icon: <LiaTruckPickupSolid  />
-                },
-                {
-                    name: "Roadside Assistance",
-                    icon: <FaTruckPickup  />
-                },
-                ]
-            },
-        ],
+        //     },
+        //     {
+        //         name: "Optional / Custom Add-ons",
+        //         image: "/src/assets/add-on.png",
+        //         color: "#F2F1F3",
+        //         text: "#B593FF",
+        //     },
+        //     {
+        //         text: "#B593FF",
+        //         otherfeatures: [
+        //             {
+        //             name: "Pick-Up & Drop Service",
+        //             subHeading: "a rider picks up and delivers the vehicle after servicing",
+        //             icon: <LiaTruckPickupSolid  />
+        //         },
+        //         {
+        //             name: "Roadside Assistance",
+        //             icon: <FaTruckPickup  />
+        //         },
+        //         ]
+        //     },
+        // ],
     },
     {
         name: "Plans",
-        heading:"Flexible maintenance packages",
-        subMenuHeadings: [`Basic Plan - “Essential Care”`, `Plus Plan - “Smart Care”`, `Premium Plan - “Total Care”`],
-        subMenus: [
-            {
-                name: `Basic Plan - “Essential Care”`,
-                subHeading: "Basic bike maintenance services",
-                price: "₹999/year",
-                color: "#00B2FF",
-                image: "/src/assets/basicplan.png",
-            },
-            {
-                name: `Plus Plan - “Smart Care”`,
-                subHeading: "Comprehensive maintenance package",
-                price: "₹1,999/year",
-                color: "#B593FF",
-                image: "/src/assets/smartplan.png",
-            },
-            {
-                name: `Premium Plan - “Total Care”`,
-                subHeading: "Premium full-coverage service",
-                price: "₹2,999/year",
-                color: "#F2F1F3",
-                text: "#B593FF",
-                image: "/src/assets/totalcare.png",
-            },
-        ]
+        link: "/plans"
+        // heading:"Flexible maintenance packages",
+        // subMenuHeadings: [`Basic Plan - “Essential Care”`, `Plus Plan - “Smart Care”`, `Premium Plan - “Total Care”`],
+        // subMenus: [
+        //     {
+        //         name: `Basic Plan - “Essential Care”`,
+        //         subHeading: "Basic bike maintenance services",
+        //         price: "₹999/year",
+        //         color: "#00B2FF",
+        //         image: "/src/assets/basicplan.png",
+        //         link: "/#pricing"
+        //     },
+        //     {
+        //         name: `Plus Plan - “Smart Care”`,
+        //         subHeading: "Comprehensive maintenance package",
+        //         price: "₹1,999/year",
+        //         color: "#B593FF",
+        //         image: "/src/assets/smartplan.png",
+        //     },
+        //     {
+        //         name: `Premium Plan - “Total Care”`,
+        //         subHeading: "Premium full-coverage service",
+        //         price: "₹2,999/year",
+        //         color: "#F2F1F3",
+        //         text: "#B593FF",
+        //         image: "/src/assets/totalcare.png",
+        //     },
+        // ]
     },
     {
         name: "More",
+        link: "/#pricing",
         heading:"Riderhub, Insights and Support",
         subMenus: [
             {
@@ -176,31 +180,32 @@ export const benefitsList = [
 
 export const section3Steps = [
     {
-        image: "src/assets/section3-services/comprehesive.png",
+        image: "https://res.cloudinary.com/duxgfwaef/image/upload/v1765632753/Gemini_Generated_Image_at12zuat12zuat12_-_Copy_jckjay.png",
         heading: "Comprehensive Vehicle Servicing",
         subHeading: `End-to-end maintenance services including general inspection, oil changes, brake checks, engine diagnostics, tire rotation, and fluid refills. 
                     Users can choose from multiple service packages tailored to their vehicle type and usage.`
     },
     {
-        image: "src/assets/section3-services/onlineBooking.png",
+        image: "https://res.cloudinary.com/duxgfwaef/image/upload/v1765632818/Gemini_Generated_Image_isbq34isbq34isbq_-_Copy_yt3wey.png",
         heading: "Online Service Booking",
         subHeading: `A seamless appointment-booking system that allows customers to schedule services at their convenience. Includes slot availability, service center selection, and instant booking confirmation`
     },
     {
-        image: "src/assets/section3-services/realtime.png",
+        image: "https://res.cloudinary.com/duxgfwaef/image/upload/v1765632757/Gemini_Generated_Image_dshw9edshw9edshw_-_Copy_snjzqu.png",
         heading: "Real-Time Service Updates",
         subHeading: `Live status tracking of ongoing vehicle services—such as “In Inspection,” “Service in Progress,” “Quality Check,” and “Ready for Delivery.” Users receive instant notifications through SMS, email, or in-app alerts.`
     },
     {
-        image: "src/assets/section3-services/roadside.png",
+        image: "https://res.cloudinary.com/duxgfwaef/image/upload/v1765632822/Gemini_Generated_Image_yhzl18yhzl18yhzl_-_Copy_xfckiz.png",
         heading: "Roadside Assistance",
         subHeading: `24/7 emergency support for breakdowns. Offers instant tow-truck requests, on-spot minor repair help (battery jump-start, tire replacement, fuel delivery), and live tracking of assistance vehicles.`
     },
     {
-        image: "src/assets/section3-services/drop.png",
+        image: "https://res.cloudinary.com/duxgfwaef/image/upload/v1765632817/Gemini_Generated_Image_z8mxi9z8mxi9z8mx_-_Copy_nsge8j.png",
         heading: "Pick-Up & Drop Subscription Service",
         subHeading: `Premium subscription plans offering doorstep vehicle pick-up and drop for scheduled maintenance or repairs. Includes priority slots, discounted rates, and faster turn-around time for subscribers.`
     },
+   
 
 ]
 
@@ -242,42 +247,42 @@ export const process = [
 export const testimonals = [
     {
         name: "Rajesh Kumar",
-        photo: "src/assets/testimonal_photos/person1.jpg",
+        photo: "https://res.cloudinary.com/duxgfwaef/image/upload/v1765632756/naim-ahmed-8BcVHmAHtlw-unsplash_c6btwf.jpg",
         type: "Commuter",
         place: "Delhi",
         comment: `"I stopped worrying about when to service my bike. MotoCare reminds me, books it, and I get it back running better than before."`
     },
     {
         name: "Priya Sharma",
-        photo: "src/assets/testimonal_photos/person3f.jpg",
+        photo: "https://res.cloudinary.com/duxgfwaef/image/upload/v1765451133/dhruv-kadam--cFEBbptadk-unsplash_rohumv.jpg",
         type: "Weekend rider",
         place: "Mumbai",
         comment: `"The transparency is what sold me. I see exactly what's wrong before they touch anything, and the prices never change."`
     },
     {
         name: "Arjun Singh",
-        photo: "src/assets/testimonal_photos/person2.jpg",
+        photo: "https://res.cloudinary.com/duxgfwaef/image/upload/v1765632631/naim-ahmed-Hkq79IlzegU-unsplash_piox8z.jpg",
         type: "Long-distance rider",
         place: "Bangalore",
         comment: `"Roadside assistance saved me twice already. Worth every rupee of the subscription."`
     },
     {
         name: "Vikram Patel",
-        photo: "src/assets/testimonal_photos/person2.jpg",
+        photo: "https://res.cloudinary.com/duxgfwaef/image/upload/v1765449991/samples/man-portrait.jpg",
         type: "Daily commuter",
         place: "Pune",
         comment: `"The subscription paid for itself in the first service. No more guessing what my bike needs."`
     },
     {
         name: "Meera Desai",
-        photo: "src/assets/testimonal_photos/person2.jpg",
+        photo: "https://res.cloudinary.com/duxgfwaef/image/upload/v1765449993/samples/woman-on-a-football-field.jpg",
         type: "Adventure rider",
         place: "Goa",
         comment: `"I ride across states. Having roadside help everywhere gives me peace of mind I didn't have before."`
     },
     {
         name: "Anil Verma",
-        photo: "src/assets/testimonal_photos/person2.jpg",
+        photo: "https://res.cloudinary.com/duxgfwaef/image/upload/v1765449989/samples/smile.jpg",
         type: "Fleet operator,",
         place: "Hyderabad",
         comment: `"Fixed costs mean I can budget properly. No surprises, no stress, just reliable service."`
