@@ -3,9 +3,11 @@
 
 /* theme 1*/
 
-/* body {
-  background-color: #FFFCE1;
-} */
+body {
+  font-family:"Urbanist" ;
+  overflow-x: hidden;
+}
+
 
 * {
   box-sizing: border-box;
@@ -15,7 +17,7 @@
 
     /*Brand Colors */
     --color-primary: #000000;
-    --color--Primary-dark: #FFFFFF;
+    --color--background: #FFFFFF;
     --color-secondary: #D8D8D8;
     --color-accent: #90D5FF;  
     --color-surface: #F9FAFB;
@@ -23,6 +25,7 @@
     --color-accent2: #00B2FF;
     --color-accent3: #B593FF;
     --color-accent4: #D8D8D8;
+    --color-accent: #FF8904
 
 
     /* 🔤 Typography */
@@ -101,7 +104,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .infinite {
   /* Set the duration of the scroll. Adjust 25s for speed (lower = faster) */
-  animation-duration: 30s; 
+  animation-duration: 60s; 
   /* Run the animation indefinitely */
   animation-iteration-count: infinite;
   /* Use the keyframes we defined */
@@ -110,3 +113,48 @@ h1, h2, h3, h4, h5, h6 {
   animation-timing-function: linear; 
 }
 
+
+
+@keyframes scroll-right {
+   0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+.infiniteRight {
+  /* Set the duration of the scroll. Adjust 25s for speed (lower = faster) */
+  animation-duration: 60s; 
+  /* Run the animation indefinitely */
+  animation-iteration-count: infinite;
+  /* Use the keyframes we defined */
+  animation-name: scroll-right; 
+  /* Define the timing function (liner) */
+  animation-timing-function: linear; 
+}
+
+
+
+@media (max-width: 768px) {
+  .infinite {
+    animation-duration: 45s;
+  }
+  .infiniteRight {
+    animation-duration: 45s;
+  }
+}
+
+
+.fade-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+  mask-size: 100%;
+}
