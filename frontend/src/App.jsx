@@ -3,6 +3,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import HomePage from './pages/HomePage'
 import { PlansPage } from './pages/PlansPage'
 import AppleStyleCarousel from './components/AppleStyleCarousel'
+import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegistrationPage'
+
 
 
 
@@ -20,7 +23,16 @@ function App() {
      {
       path:"/test",
       element: <AppleStyleCarousel />
-     }
+     },
+     {
+      path:"/login",
+      element: <LoginPage />
+     },
+     {
+      path:"/register",
+      element: <RegisterPage />
+     },
+
 
   ])
   return <RouterProvider router={router} />

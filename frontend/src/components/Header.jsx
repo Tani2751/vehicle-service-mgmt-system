@@ -97,9 +97,11 @@ useEffect(() => {
                   </ul>
             </nav>    
             <div className="flex items-center justify-center">
-              <button className="bg-primary hidden lg:block ml-5 font-semibold text-white px-3 py-1.5 rounded-[12px]  p-3 xl:px-5 xl:py-2 hover:scale-110 cursor-pointer duration-300 transition-all">
-                Log in
-            </button>
+              <NavLink to="/login">
+                <button className="bg-primary hidden lg:block ml-5 font-semibold text-white px-3 py-1.5 rounded-[12px]  p-3 xl:px-5 xl:py-2 hover:scale-110 cursor-pointer duration-300 transition-all">
+                    Log in
+                </button>
+              </NavLink>              
             </div>          
         </div>
         {/* hamburger btn */}

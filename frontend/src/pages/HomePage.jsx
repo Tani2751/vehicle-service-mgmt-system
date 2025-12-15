@@ -79,17 +79,17 @@ function HomePage() {
             clipPath: "inset(0 100% 0 0)", // Completely hidden from the right
         });
 
-        // tl.fromTo(
-        //     landingRef.current,
-        //     { scale: 0, opacity: 0, transformOrigin: ' center' },
-        //     { 
-        //         scale: 1, 
-        //         opacity: 1, 
-        //         duration: 2.0,
-        //         ease: "power4.out"
-        //     },
-        //     0
-        // ) 
+        tl.fromTo(
+            landingRef.current,
+            { scaleY: 0, opacity: 0, transformOrigin: 'top' },
+            { 
+                scaleY: 1, 
+                opacity: 1, 
+                duration: 2.0,
+                ease: "power4.out"
+            },
+            0
+        ) 
         
         // tl.fromTo(
         //         contentRef.current,
