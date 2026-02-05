@@ -1,13 +1,11 @@
 
 @import "tailwindcss";
 
-/* theme 1*/
 
 body {
   font-family:"Urbanist" ;
   overflow-x: hidden;
 }
-
 
 * {
   box-sizing: border-box;
@@ -27,12 +25,10 @@ body {
     --color-accent4: #D8D8D8;
     --color-accent: #FF8904
 
-
     /* 🔤 Typography */
 
     --font-heading: "Urbanist";
     --font-sans: "Noto Sans";
-
 
     --text-mediumNormal: 18px;
     --text-regularNormal: 16px;
@@ -49,13 +45,9 @@ body {
 
    --breakpoint-myPoint: 1400px
 
-    
 }
 
-
-
 @layer base {
-
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
@@ -91,7 +83,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-
 @keyframes scroll-left {
   from {
     transform: translateX(0);
@@ -100,7 +91,6 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(-50%);
   }
 }
-
 
 .infinite {
   /* Set the duration of the scroll. Adjust 25s for speed (lower = faster) */
@@ -113,8 +103,6 @@ h1, h2, h3, h4, h5, h6 {
   animation-timing-function: linear; 
 }
 
-
-
 @keyframes scroll-right {
    0% {
     transform: translateX(-50%);
@@ -123,7 +111,6 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(0);
   }
 }
-
 
 .infiniteRight {
   /* Set the duration of the scroll. Adjust 25s for speed (lower = faster) */
@@ -136,8 +123,6 @@ h1, h2, h3, h4, h5, h6 {
   animation-timing-function: linear; 
 }
 
-
-
 @media (max-width: 768px) {
   .infinite {
     animation-duration: 45s;
@@ -146,7 +131,6 @@ h1, h2, h3, h4, h5, h6 {
     animation-duration: 45s;
   }
 }
-
 
 .fade-mask {
   mask-image: linear-gradient(
@@ -158,3 +142,9 @@ h1, h2, h3, h4, h5, h6 {
   );
   mask-size: 100%;
 }
+
+.error {
+  @apply text-red-500 text-sm ;
+}
+
+

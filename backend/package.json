@@ -1,18 +1,34 @@
 {
   "dependencies": {
+    "@react-email/components": "^1.0.4",
+    "argon2": "^0.44.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
+    "drizzle-orm": "^0.45.1",
     "express": "^5.1.0",
-    "nodemon": "^3.1.11"
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.15.3",
+    "nodemon": "^3.1.11",
+    "react-email": "^5.2.3",
+    "request-ip": "^3.3.0",
+    "resend": "^6.7.0",
+    "zod": "^4.2.1"
   },
   "name": "vsms",
   "version": "1.0.0",
   "description": "A Vehicle Service Management System (VSMS) is a web app that allows customers to book vehicle services online, track the service progress, and view their history.",
-  "main": "server.js",
+  "main": "server.jsx",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node  --env-file=.env --watch server.js"
+    "dev": "tsx  --env-file=.env --watch server.jsx",
+    "db:seed": "node DB_seeds/index.js",
+    "email:dev": "react-email dev"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@react-email/preview-server": "^5.2.3",
+    "drizzle-kit": "^0.31.8"
+  }
 }

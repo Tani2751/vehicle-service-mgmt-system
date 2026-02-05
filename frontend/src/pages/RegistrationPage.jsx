@@ -3,17 +3,68 @@
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Chrome } from 'lucide-react';
-import React from 'react';
 import Header from '../components/Header';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import { registerSchema } from '../schemas/auth_schema';
+import { getPasswordStrength } from '../utilities';
+import { toast } from 'react-toastify';
+import { zodResolver } from "@hookform/resolvers/zod";
+
+
 
 const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   
   // Refs for GSAP
   const containerRef = useRef(null);
   const formRef = useRef(null);
   const bgShapeRef = useRef(null);
+
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(registerSchema),
+  });
+
+
+  const password = watch("password", "");
+  const strength = getPasswordStrength(password);
+
+  const onSubmit = async (data) => {
+    console.log("Register Data:", data);
+    
+      try {
+          const res = await fetch('http://localhost:3000/api/v1/auth/register', {
+              method: "POST",
+              headers: {"Content-Type": "application/json"},
+              cedentials: "include",
+              body: JSON.stringify(data)
+          })
+          const reqObj = await res.json();
+          console.log(reqObj);
+            
+          if (reqObj.success) {
+              toast.success(`User created successfully, Welcom ${reqObj?.data.user.name}!`, {
+                  position:"top-center",
+                  autoClose: 3000,                    
+              });
+              navigate('/dashboard', {replace: true});
+            } else {
+              toast.error(`${reqObj.message}`, {
+                position:"top-center",
+                autoClose: 3000,                    
+              })
+            }
+      } catch (error) {
+        console.log(error);
+    };
+  }
 
   // GSAP Entrance Animation
   useEffect(() => {
@@ -87,7 +138,7 @@ const RegisterPage = () => {
         </div>
 
         {/* Form */}
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit(onSubmit)} method="Post">
           
           {/* Full Name Input (New) */}
           <div className="space-y-1.5 form-item">
@@ -99,12 +150,15 @@ const RegisterPage = () => {
                 <User className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
               </div>
               <input 
-                type="text" 
+                type="text"
+                {...register("name")} 
                 placeholder="John Doe"
                 className="w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl py-3 pl-12 pr-4 outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 placeholder:text-gray-400"
               />
             </div>
+            {errors.name && <p className="error">{errors.name.message}</p>}
           </div>
+          
 
           {/* Email Input */}
           <div className="space-y-1.5 form-item">
@@ -115,13 +169,17 @@ const RegisterPage = () => {
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <Mail className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
               </div>
-              <input 
+              <input
+                {...register("email")}
                 type="email" 
                 placeholder="jhon@gmail.com"
                 className="w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl py-3 pl-12 pr-4 outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 placeholder:text-gray-400"
               />
             </div>
+            {errors.email && <p className="error">{errors.email.message}</p>}
           </div>
+
+          
 
           {/* Password Input */}
           <div className="space-y-1.5 form-item">
@@ -133,7 +191,61 @@ const RegisterPage = () => {
                 <Lock className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
               </div>
               <input 
-                type={showPassword ? "text" : "password"} 
+                type={showPassword ? "text" : "password"}
+                {...register("password")}
+                placeholder="Create a password"
+                className="w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl py-3 pl-12 pr-12 outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 placeholder:text-gray-400"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+              >
+                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+              </button>
+              
+            </div>
+            {errors.password && <p className="error">{errors.password.message}</p>}
+             {/* Password Strength Micro-interaction */}
+            <div className="flex items-center gap-2 mt-2">
+              {[1, 2, 3, 4].map((level) => (
+                <div
+                  key={level}
+                  className={`h-1.5 flex-1 rounded transition-colors
+                    ${
+
+                      strength >= level
+                      ? strength >= 3 
+                        ? "bg-green-400"
+                        : strength >= 2
+                          ? "bg-yellow-400"
+                          : "bg-red-400"
+                      : "bg-gray-400"
+                    }
+                  `}
+                />
+              ))}
+              <p className="text-sm">
+                {strength === 0 && "Enter a password"}
+                {strength === 1 && "Weak password"}
+                {strength === 2 && "Medium password"}
+                {strength === 3 && "Strong password"}
+                {strength === 4 && "Very strong password"}
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-1.5 form-item">
+            <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1">
+             Confirm Password
+            </label>
+            <div className="relative group">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Lock className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
+              </div>
+              <input 
+                type={showPassword ? "text" : "password"}
+                {...register("confirmPassword")} 
                 placeholder="Create a password"
                 className="w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl py-3 pl-12 pr-12 outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 placeholder:text-gray-400"
               />
@@ -145,14 +257,10 @@ const RegisterPage = () => {
                 {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
               </button>
             </div>
-             {/* Password Strength Micro-interaction */}
-            <div className="flex gap-1 mt-2 ml-1">
-                <div className="h-1 w-full rounded-full bg-green-500/50"></div>
-                <div className="h-1 w-full rounded-full bg-green-500/50"></div>
-                <div className="h-1 w-full rounded-full bg-gray-200"></div>
-                <div className="h-1 w-full rounded-full bg-gray-200"></div>
-            </div>
+            {errors.confirmPassword && (<p className="error">{errors.confirmPassword.message}</p>)}
           </div>
+
+
 
           {/* Terms Checkbox */}
           <div className="flex items-center gap-2 form-item py-1">
@@ -163,9 +271,9 @@ const RegisterPage = () => {
           </div>
 
           {/* Sign Up Button */}
-          <button className='bg-orange-400 group w-full py-3.5 rounded-xl shadow-[0_4px_14px_0_rgba(249,115,22,0.39)] hover:shadow-[0_6px_20px_rgba(249,115,22,0.23)] h-10 text-white font-bold text-mediumNormal
+          <button disabled={isSubmitting} className='bg-orange-400 group w-full py-3.5 rounded-xl shadow-[0_4px_14px_0_rgba(249,115,22,0.39)] hover:shadow-[0_6px_20px_rgba(249,115,22,0.23)] h-10 text-white font-bold text-mediumNormal
              hover:bg-orange-500 hover:scale-105 cursor-pointer transition-all duration-300 flex items-center justify-center'>
-            Create Account
+            {isSubmitting ? "Creating" : "Create Account"}
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </button>
 

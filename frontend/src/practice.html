@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>
+        Practice
+    </h2>
+    <script>
+
+        // question 1 - find maximum and minimum values in an array
+
+        // const arr = [3, 5,, 4, 22, 33];
+
+        // function MinMaxArray(arr) {
+        //     let n = arr.length;
+        //     let min = arr[0];
+        //     let max = arr[0];
+
+        //     for (let i = 1; i < n; i++) {
+        //         if(arr[i] < min) {
+        //             min = arr[i]
+        //         } else if (arr[i] > max) {
+        //             max = arr[i]
+        //         }
+        //     }
+        //     console.log(`Max: ${max}, Min: ${min}`);
+            
+        // }
+
+
+        // MinMaxArray(arr)
+
+
+        // question 2 - secound largest elem in an array
+
+        // const arr = [12, 35, 1, 10, 34, 1, 22, 54, 100];
+
+        // function SecLargestArr(arr) {
+        //     let n = arr.length;
+        //     let firstLargest = arr[0];
+        //     let secoundlargest = arr[0];
+
+        //     for (let i = 1; i < n; i++) {
+        //         if (arr[i] > firstLargest) {
+        //             secoundlargest = firstLargest // imp
+        //             firstLargest = arr[i];
+        //         }
+        //         if (arr[i] > secoundlargest && arr[i] < firstLargest) {
+        //             secoundlargest = arr[i];
+        //         }
+        //     }   
+        //     console.log(`Secound largest: ${secoundlargest}`)
+        // }
+
+        // SecLargestArr(arr)
+
+
+        // question 3 -  Check if array is sorted
+
+    //    let arr = [1, 2, 2, 4];
+
+    //    function checkSorted(arr) {
+    //         for (let i = 1; i < arr.length; i++) {
+    //             if (arr[1] < arr[i - 1]) {
+    //                 return false;                 
+    //             }   
+    //             return true;
+    //         }
+    //     }
+
+    //    console.log(checkSorted(arr));
+
+    // question 4 - Reverse an array
+
+    // const arr = [1, 2, 4, 6, 8];
+
+    // function reverseArr(arr) {
+    //     let left = 0;
+    //     let right = arr.length - 1;
+
+    //     while (right > left) {
+    //        [ arr[left], arr[right] ] = [ arr[right], arr[left] ]
+    //         left++;
+    //         right--;
+    //     }
+    //     return arr;
+    // }
+
+    // console.log(reverseArr(arr));
+
+
+    // question 5 - Rotate Array by 1
+
+
+    // const arr = [1, 2, 3, 4, 5, 6, 7];
+
+    // function rotateBy1(arr) {
+    //     if (arr.length <= 1) return arr;
+    //     let lastElem = arr[arr.length - 1]
+    //     for (let i = arr.length - 1; i >= 1; i--) {
+    //         arr[i] = arr[i - 1];
+    //     }
+    //     arr[0] = lastElem;
+    //     return arr;
+    // }
+    
+
+    // console.log(rotateBy1(arr));
+    
+    
+    // question 6 - Rotate Array by k
+
+    // const arr = [1, 2, 3];
+
+    // function rotateByK(arr, k) {
+    //     if (arr.length <= 1) return arr;
+
+    //     k = k & arr.length;
+
+    //     let left = 0;
+    //     let right = arr.length - 1;
+
+    //     while (right > left) {
+    //        [ arr[left], arr[right] ] = [ arr[right], arr[left] ]
+    //         left++;
+    //         right--;
+    //     }
+
+    //     left = 0;
+    //     right = k - 1;
+
+    //     while (right > left) {
+    //         [ arr[left], arr[right] ] = [ arr[right], arr[left] ]
+    //         left++;
+    //         right--;
+    //     }
+
+
+    //     left = k ;
+    //     right = arr.length - 1;
+
+    //     while (right > left) {
+    //         [ arr[left], arr[right] ] = [ arr[right], arr[left] ]
+    //         left++;
+    //         right--;
+    //     }
+
+    //     return arr
+
+    // }
+
+    // console.log(rotateByK(arr, 5));
+    
+
+    // question 7 - Move All Zeros to End
+
+    // const arr = [0, 1, 0, 3, 12];
+
+    // function collectZero(arr) {
+    //     let k = 0;
+
+    //     for (let i = 0; i < arr.length; i++) {
+    //         if (arr[i] !== 0) {
+    //             arr[k] = arr[i];
+    //             k++;
+    //         }
+    //     }
+
+    //     while (k < arr.length) {
+    //         arr[k] = 0;
+    //         k++
+    //     }
+    //     return arr;
+    // }   
+
+    // console.log(collectZero(arr));
+    
+
+    // question 7 - Linear search
+
+    // const arr = [10, 20, 30, 40, 50];
+
+    // function linearSearch(arr, t) {
+
+    //     for (let i = 0; i < arr.length; i++) {
+    //         if (arr[i] === t) {
+    //             return i;
+    //         }             
+    //     }
+    //     return -1;
+    // }
+
+    // console.log(linearSearch(arr, 30));
+    
+    
+    // question 7 - Count Occurrences of an Element
+
+    // const arr = [1, 2, 2, 3, 2, 4];
+
+    // function countElem(arr, t) {
+    //     let count = 0;
+    //     for (let i = 0; i < arr.length; i++) {
+    //         if (arr[i] === t) {
+    //             count++
+    //         }
+    //     }
+    //     return count;
+    // }
+
+    // console.log(countElem(arr, 2));
+
+    // question 8 - Find Missing Number
+    
+    // const arr = [1, 2, 4, 5];
+
+    // function missingNo(arr, n) {
+    //     let totalSum = n * (n + 1) / 2;
+    //     let actualSum = 0;
+    //     for (a of arr) {
+    //         actualSum += a;
+    //     }
+
+    //     return totalSum - actualSum;
+    // }
+
+    // console.log(missingNo(arr, 5));
+
+
+    // question 8 - Find Duplicate Element
+
+    const arr = [2, 5, 9, 6, 9, 3, 8, 9, 7, 1];
+
+    function duplicateElem(arr) {
+        const count = arr.reduce((acc, val) => {
+            acc[val] = (acc[val] || 0) + 1;
+            return acc;
+        }, {})
+
+        let arrCount = Object.entries(count);
+        let dup = 0;
+        for (let i = 0; i < Object.entries(count).length; i++) {
+            if (arrCount[i][1] > 1) {
+                dup = arrCount[i][0];
+            }
+        }
+        return dup;
+    }
+    
+    console.log(duplicateElem(arr));
+    
+    </script>
+</body>
+</html>

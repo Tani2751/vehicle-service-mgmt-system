@@ -1,11 +1,27 @@
-import React, { useState, useRef, useEffect } from 'react';
+import  { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { Eye, EyeOff, Mail, Lock, ArrowRight, Chrome } from 'lucide-react';
 import Header from '../components/Header';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema } from '../schemas/auth_schema';
+import { useAuth } from '../Hooks/useAuth';
+import {toast}  from "react-toastify"
+
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const {setUser, setAccessToken, user} = useAuth();
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: {errors, isSubmitting}
+  } = useForm({
+    resolver: zodResolver(loginSchema)
+  })
   
   // Refs for GSAP
   const containerRef = useRef(null);
@@ -47,6 +63,51 @@ const LoginPage = () => {
     return () => ctx.revert();
   }, []);
 
+
+  const onSubmit = async(data) => {
+   
+        try {
+            const res = await fetch('http://localhost:3000/api/v1/auth/login', {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(data),
+                credentials: "include"
+            })
+            const resObj = await res.json();
+
+            console.log(resObj, '78');
+            
+    
+            if (resObj.success) {
+                setUser(resObj.data.user);
+                setAccessToken(resObj.data.accessToken);
+                toast.success(`Welcom, ${resObj?.data.user.name}!`, {
+                    position: "top-center",
+                    autoClose: 1000,
+                });
+
+                console.log(resObj.data.user, '89');
+                
+                
+                if (resObj.data.user.role === 'super_admin') {
+                  navigate("/SuperAdminDashboard", {replace: true}) 
+                } else if (resObj.data.user.role === 'garage_admin') {
+                  navigate("/garageAdminDashboard", {replace: true}) 
+                }
+
+            } else {
+              console.log('chal');
+              
+                toast.error(resObj.message, {
+                    position: "top-center",
+                    autoClose: 3000,
+                })
+            }
+        } catch (error) {
+          console.log(error);          
+        }       
+  }
+
   return (
     <>
    
@@ -86,7 +147,7 @@ const LoginPage = () => {
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
           
           {/* Email Input */}
           <div className="space-y-1.5 form-item">
@@ -97,12 +158,14 @@ const LoginPage = () => {
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <Mail className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
               </div>
-              <input 
+              <input
+                {...register("email")}
                 type="email" 
                 placeholder="hello@motocare.com"
-                className="w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl py-3 pl-12 pr-4 outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 placeholder:text-gray-400"
-              />
+                className=" input w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl py-3 pl-12 pr-4 outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 placeholder:text-gray-400"                
+              />              
             </div>
+            {errors.email && <p className="error">{errors.email.message}</p>}
           </div>
 
           {/* Password Input */}
@@ -111,33 +174,37 @@ const LoginPage = () => {
               <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
                 Password
               </label>
-              <a href="#" className="text-xs text-orange-600 font-medium hover:text-orange-700 transition-colors">
+              <Link to="/forgot-password" className="text-xs text-orange-600 font-medium hover:text-orange-700 transition-colors">
                 Forgot password?
-              </a>
+              </Link>
             </div>
             <div className="relative group">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <div className="absolute inset-y-0 left-0  pl-4 flex items-center pointer-events-none">
                 <Lock className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
               </div>
-              <input 
+              <input
+                {...register("password")}
                 type={showPassword ? "text" : "password"} 
                 placeholder="••••••••"
-                className="w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl py-3 pl-12 pr-12 outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 placeholder:text-gray-400"
+                className="w-full  bg-gray-50 border border-gray-200 text-gray-900 rounded-xl py-3 pl-12 pr-12 outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 placeholder:text-gray-400"
               />
+                          
+              
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+                className="absolute  inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
               >
                 {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
               </button>
             </div>
+            {errors.password && <p className="error">{errors.password.message}</p>}
           </div>
 
           {/* Sign In Button */}
-          <button className='bg-orange-400 group w-full py-3.5 rounded-xl shadow-[0_4px_14px_0_rgba(249,115,22,0.39)] hover:shadow-[0_6px_20px_rgba(249,115,22,0.23)] h-10 text-white font-bold text-mediumNormal
+          <button disabled={isSubmitting} className='bg-orange-400 group w-full py-3.5 rounded-xl shadow-[0_4px_14px_0_rgba(249,115,22,0.39)] hover:shadow-[0_6px_20px_rgba(249,115,22,0.23)] h-10 text-white font-bold text-mediumNormal
              hover:bg-orange-500 hover:scale-105 cursor-pointer transition-all duration-300 flex items-center justify-center'>
-            Sign In
+            {isSubmitting ? "Logging in..." : "Login"}
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </button>
 

@@ -4,7 +4,8 @@ import { MobileDropdown } from "./mobileDropdown";
 import { DesktopDropdown } from "./desktopDropdown";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { LogIn, LogOut } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +13,10 @@ gsap.registerPlugin(ScrollTrigger);
 const Header = React.forwardRef(({smoother, smoothWrapper}, ref) =>  {
   
   const [open, setOpen] = useState(false);
-  const firstMenuItemRef = useRef(null); // 🔑 1. Create Ref
+  const firstMenuItemRef = useRef(null); 
+  const location = useLocation();
+  console.log(location.pathname);
+  
 
   useEffect(() => {
     if (!smoother) return;
@@ -24,58 +28,51 @@ const Header = React.forwardRef(({smoother, smoothWrapper}, ref) =>  {
     }
   }, [open, smoother]);
 
- 
+  useEffect(() => {
+    if (!smoother || !ref?.current) return;
 
+    let lastScroll = smoother.scrollTop();
+    const delta = 8;         // scroll sensitivity
+    const minOffset = 80;   // only hide after scrolling down a bit
 
+    const showHeader = () => {
+      gsap.to(ref.current, {
+        y: 0,
+        duration: 0.35,
+        ease: "power3.out",
+        overwrite: "auto",
+      });
+    };
 
-useEffect(() => {
-  if (!smoother || !ref?.current) return;
+    const hideHeader = () => {
+      gsap.to(ref.current, {
+        y: -140,
+        duration: 0.35,
+        ease: "power3.out",
+        overwrite: "auto",
+      });
+    };
 
-  let lastScroll = smoother.scrollTop();
-  const delta = 8;         // scroll sensitivity
-  const minOffset = 80;   // only hide after scrolling down a bit
+    // This is the correct ScrollTrigger
+    const st = ScrollTrigger.create({
+      scroller: smoothWrapper.current, // <-- FIX
+      onUpdate: () => {
+        const current = smoother.scrollTop();
 
-  const showHeader = () => {
-    gsap.to(ref.current, {
-      y: 0,
-      duration: 0.35,
-      ease: "power3.out",
-      overwrite: "auto",
-    });
-  };
+        if (current > lastScroll + delta && current > minOffset) {
+          hideHeader();   // scrolling down
+        } else if (current < lastScroll - delta) {
+          showHeader();   // scrolling up
+        }
 
-  const hideHeader = () => {
-    gsap.to(ref.current, {
-      y: -140,
-      duration: 0.35,
-      ease: "power3.out",
-      overwrite: "auto",
-    });
-  };
-
-  // This is the correct ScrollTrigger
-  const st = ScrollTrigger.create({
-    scroller: smoothWrapper.current, // <-- FIX
-    onUpdate: () => {
-      const current = smoother.scrollTop();
-
-      if (current > lastScroll + delta && current > minOffset) {
-        hideHeader();   // scrolling down
-      } else if (current < lastScroll - delta) {
-        showHeader();   // scrolling up
+        lastScroll = current;
       }
+    });
 
-      lastScroll = current;
-    }
-  });
+    gsap.set(ref.current, { y: 0 });
 
-  gsap.set(ref.current, { y: 0 });
-
-  return () => st.kill();
-}, [smoother, ref]);
-
-
-
+    return () => st.kill();
+  }, [smoother, ref]);
 
   const handleDropdown = () => {
     setOpen(prev => !prev);
@@ -99,7 +96,7 @@ useEffect(() => {
             <div className="flex items-center justify-center">
               <NavLink to="/login">
                 <button className="bg-primary hidden lg:block ml-5 font-semibold text-white px-3 py-1.5 rounded-[12px]  p-3 xl:px-5 xl:py-2 hover:scale-110 cursor-pointer duration-300 transition-all">
-                    Log in
+                    {location.pathname === "/dashboard" ? "Logout" : "LogIn"}
                 </button>
               </NavLink>              
             </div>          
@@ -137,7 +134,7 @@ useEffect(() => {
           }
         `}>
           
-          <nav className="w-full" aria-label="Mobile Navigation">
+          <nav className="w-full " aria-label="Mobile Navigation">
             <ul className="flex flex-col gap-2"> 
               {
                 menus.map((menu, index) => {
@@ -151,7 +148,15 @@ useEffect(() => {
                 )
               }
             </ul>
+            <div className="flex items-center mt-30 left-40 justify-center">
+              <NavLink to="/login">
+                <button className="bg-primary lg:block ml-5 font-semibold text-white px-3 py-1.5 rounded-[12px]  p-3 xl:px-5 xl:py-2 hover:scale-110 cursor-pointer duration-300 transition-all">
+                   {location.pathname === "/dashboard" ? "Logout" : "LogIn"}
+                </button>
+              </NavLink>              
+          </div> 
           </nav>
+          
     </div>
       </>
   );

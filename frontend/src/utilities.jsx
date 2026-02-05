@@ -2,13 +2,27 @@
 import { LiaTruckPickupSolid } from "react-icons/lia";
 import { FaTruckPickup } from "react-icons/fa";
 import { CalendarDays, ClipboardCheck, SearchCheck, Wrench, ShieldCheck, Handshake } from 'lucide-react';
-
+import {
+  LayoutDashboard,
+  Users,
+  Car,
+  Calendar,
+  BarChart,
+  Settings,
+  MessageCircleQuestionMark,
+  Search,  
+  EllipsisVertical,
+  WalletCards,
+  Cylinder ,
+  UserStar,
+  ChevronsUpDown 
+} from "lucide-react"
 
 
 export const menus = [
     {
         name: "Services",
-        link: "/#pricing"
+        link: "/service"
         // heading:"Comprehensive bike care solutions",
         // subMenuHeadings: ["Regular / Periodic Maintenance Services", "Repair / Issue-Based Services", "Optional / Custom Add-ons", "Pick-Up & Drop Service", "Roadside Assistance", "Loyalty Points", "Service Booking", "Customer Portal"],
         // subMenus: [
@@ -79,7 +93,6 @@ export const menus = [
     },
     {
         name: "More",
-        link: "/#pricing",
         heading:"Riderhub, Insights and Support",
         subMenus: [
             {
@@ -90,7 +103,8 @@ export const menus = [
             {
                 name: "Dashboard",
                 subHeading: "Manage your bike service",
-                image: "/src/assets/dashboard.png"
+                image: "/src/assets/dashboard.png",
+                link: "/dashboard"
             },
             {
                 name: "Service Booking",
@@ -423,3 +437,257 @@ export const pricingPlans = [
     { feature: "Referral Rewards", basic: false, standard: false, premium: true },
   ];
 
+
+
+  export function getPasswordStrength(password = "") {
+    let score = 0;
+
+    if (password.length >= 8) score++;
+    if (/[A-Z]/.test(password)) score++;
+    if (/[0-9]/.test(password)) score++;
+    if (/[^A-Za-z0-9]/.test(password)) score++;
+
+    return score; // 0 → 4
+}
+
+
+export const serviceRequests = [
+  {
+    serviceId: "SR-201",
+    customer: "John Doe",
+    vehicle: "Toyota Camry",
+    serviceType: "Regular",
+    status: "Completed",
+    mechanic: "Mike",
+  },
+  {
+    serviceId: "SR-202",
+    customer: "Sarah Smith",
+    vehicle: "Honda Civic",
+    serviceType: "Repair",
+    status: "In Service",
+    mechanic: "Alex",
+  },
+  {
+    serviceId: "SR-203",
+    customer: "David Johnson",
+    vehicle: "Ford F-150",
+    serviceType: "Add-ons",
+    status: "Inspection",
+    mechanic: "Chris",
+  },
+  {
+    serviceId: "SR-204",
+    customer: "Emily Brown",
+    vehicle: "Hyundai Elantra",
+    serviceType: "Add-ons",
+    status: "Checked In",
+    mechanic: "Mike",
+  },
+  {
+    serviceId: "SR-205",
+    customer: "Michael Lee",
+    vehicle: "BMW 3 Series",
+    serviceType: "Repair",
+    status: "Waiting for Parts",
+    mechanic: "Daniel",
+  },
+  {
+    serviceId: "SR-206",
+    customer: "Olivia Wilson",
+    vehicle: "Tesla Model 3",
+    serviceType: "Regular",
+    status: "In Service",
+    mechanic: "Alex",
+  },
+  {
+    serviceId: "SR-207",
+    customer: "James Anderson",
+    vehicle: "Chevrolet Malibu",
+    serviceType: "Add-ons",
+    status: "Completed",
+    mechanic: "Chris",
+  },
+  {
+    serviceId: "SR-208",
+    customer: "Sophia Martinez",
+    vehicle: "Nissan Altima",
+    serviceType: "Repair",
+    status: "Checked In",
+    mechanic: "Mike",
+  },
+  {
+    serviceId: "SR-209",
+    customer: "William Taylor",
+    vehicle: "Audi A4",
+    serviceType: "Add-ons",
+    status: "In Service",
+    mechanic: "Daniel",
+  },
+  {
+    serviceId: "SR-210",
+    customer: "Isabella Thomas",
+    vehicle: "Kia Sportage",
+    serviceType: "Regular",
+    status: "Completed",
+    mechanic: "Alex",
+  },
+];
+
+
+
+export const appointments = [
+  {
+    appointmentId: "APT-1001",
+    customer: "Amit Kumar",
+    phone: "9876543210",
+    vehicleNumber: "KA-05-MB-2345",
+    serviceType: "Regular Service",
+    appointmentDate: "2025-01-05",
+    timeSlot: "09:00 - 09:45",
+  },
+  {
+    appointmentId: "APT-1002",
+    customer: "Rahul Sharma",
+    phone: "9123456780",
+    vehicleNumber: "MH-12-AB-6789",
+    serviceType: "Oil Change",
+    appointmentDate: "2025-01-05",
+    timeSlot: "10:00 - 10:30",
+  },
+  {
+    appointmentId: "APT-1003",
+    customer: "Sneha Patel",
+    phone: "9988776655",
+    vehicleNumber: "GJ-01-KL-4321",
+    serviceType: "General Inspection",
+    appointmentDate: "2025-01-05",
+    timeSlot: "10:45 - 11:25",
+  },
+  {
+    appointmentId: "APT-1004",
+    customer: "Vikram Singh",
+    phone: "9090909090",
+    vehicleNumber: "DL-03-XY-8899",
+    serviceType: "Brake Service",
+    appointmentDate: "2025-01-06",
+    timeSlot: "09:30 - 10:30",
+  },
+  {
+    appointmentId: "APT-1005",
+    customer: "Neha Verma",
+    phone: "9012345678",
+    vehicleNumber: "RJ-14-ZZ-5566",
+    serviceType: "Battery Check",
+    appointmentDate: "2025-01-06",
+    timeSlot: "11:00 - 11:20",
+  },
+  {
+    appointmentId: "APT-1006",
+    customer: "Arjun Mehta",
+    phone: "9345678901",
+    vehicleNumber: "TN-09-QW-7788",
+    serviceType: "Engine Tuning",
+    appointmentDate: "2025-01-06",
+    timeSlot: "01:00 - 02:30",
+  },
+]
+
+
+
+
+export const inventories = [
+  {
+    partId: "INV-001",
+    partName: "Engine Oil (10W-30)",
+    category: "Lubricants",
+    availableStock: 8,
+    threshold: 20,
+    unitPrice: 420,
+    supplier: "Castrol India",
+    lastRestocked: "2024-12-28",
+    status: "Out of Stock",
+  },
+  {
+    partId: "INV-002",
+    partName: "Air Filter",
+    category: "Filters",
+    availableStock: 5,
+    threshold: 15,
+    unitPrice: 180,
+    supplier: "Bosch",
+    lastRestocked: "2024-12-22",
+    status: "Low Stock",
+  },
+  {
+    partId: "INV-003",
+    partName: "Brake Pads (Front)",
+    category: "Brakes",
+    availableStock: 4,
+    threshold: 10,
+    unitPrice: 650,
+    supplier: "TVS Parts",
+    lastRestocked: "2024-12-18",
+    status: "Critical",
+  },
+  {
+    partId: "INV-004",
+    partName: "Spark Plug",
+    category: "Engine",
+    availableStock: 12,
+    threshold: 25,
+    unitPrice: 120,
+    supplier: "NGK",
+    lastRestocked: "2024-12-30",
+    status: "Low Stock",
+  },
+  {
+    partId: "INV-005",
+    partName: "Drive Chain Kit",
+    category: "Transmission",
+    availableStock: 2,
+    threshold: 6,
+    unitPrice: 2100,
+    supplier: "Rolon",
+    lastRestocked: "2024-12-10",
+    status: "Out of Stock",
+  },
+  {
+    partId: "INV-006",
+    partName: "Battery (Two-Wheeler)",
+    category: "Electrical",
+    availableStock: 1,
+    threshold: 5,
+    unitPrice: 1650,
+    supplier: "Exide",
+    lastRestocked: "2024-12-05",
+    status: "Out of Stock",
+  },
+];
+
+
+
+export const serviceTypeData = [
+  { name: "Regular / Periodic Maintenance", value: 320 },
+  { name: "Repair / Issue-based Services", value: 175 },
+  { name: "Optional / Custom Add-ons", value: 90 },
+];
+
+
+export const superAdminSidebarItems = [
+  { title: "Dashboard", icon: LayoutDashboard, link: "/superAdminDashboard" },
+  { title: "User Management", icon: Users, link: "/superAdminDashboard/users" },
+  { title: "Appointments", icon: Calendar, link: "/superAdminDashboard/users"   },
+  { title: "Vehicles", icon: Car },
+  { title: "Job Cards", icon: Wrench },
+  { title: "Reports & Analytics", icon: BarChart },
+  {title: "Billing & Payments", icon: WalletCards },
+  {title: "Inventory", icon: Cylinder },
+]
+
+export const actionItems= [
+  {value: "View", label: "View"},
+  {value: "Edit", label: "Edit"},
+  {value: "Reset Password", label: "Reset Password"},
+  {value: "Deactivate", label: "Deactivate"},  
+]

@@ -88,11 +88,17 @@ export function DesktopDropdown({ menu, i }) {
         onMouseLeave={() => setIsOpen(false)}
         className="relative group/menu" key={i} ref={dropdownRef}>
       <NavLink
-        to={"/plans"}     
+        to={menu.link}     
         onKeyDown={handleKeyDown}        
         aria-haspopup="true" // Tells screen readers it controls a popup
         aria-expanded={isOpen} // Tells screen readers the current state
-        className="cursor-pointer text-regularNormal py-2 flex items-center gap-1 font-heading font-semibold text-black">
+        // className="cursor-pointer no-underline hover:text-orange-400 transition-colors duration-300 text-regularNormal py-2 flex items-center gap-1 font-heading font-semibold text-black">
+        className={({ isActive }) =>
+          isActive && menu.link
+            ? "text-orange-400  cursor-pointer no-underline hover:text-orange-400 transition-colors duration-300 text-regularNormal py-2 flex items-center gap-1 font-heading font-semibold"
+            : "text-black cursor-pointer no-underline hover:text-orange-400 transition-colors duration-300 text-regularNormal py-2 flex items-center gap-1 font-heading font-semibold"
+        }
+        >
         {menu.name}
         {hasSubMenu && (
           <svg
@@ -137,7 +143,7 @@ export function DesktopDropdown({ menu, i }) {
             {menu.subMenus?.map((subMenu, i) => (             
 
               <Link key={i} 
-                  to={`${subMenu.Link}`}
+                  to={`${subMenu.link}`}
                   className="no-underline text-black">
                   <div className="bg-[#F2F1F3] rounded-2xl p-3 flex flex-col items-center justify-center gap-6 
                     hover:bg-orange-400/70 transition-all duration-200 hover:text-white

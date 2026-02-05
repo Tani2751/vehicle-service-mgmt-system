@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { NavLink } from "react-router-dom";
 
 // Use an ID for the sub-menu content (e.g., based on the menu name)
 const generateId = (name) => `submenu-${name.toLowerCase().replace(/\s/g, '-')}`;
@@ -41,12 +42,12 @@ export const MobileDropdown = React.forwardRef(({ menu, isMenuOpened }, ref) => 
 
     return (
         // The container div is now just for styling/layout (ml-8)
-        <div className="ml-8 font-heading text-[#2C2828]"> 
+        <div className="ml-8 font-heading relative text-[#2C2828]"> 
             <li className="p-2 text-3xl md:text-3xl flex items-center gap-1 select-none">
                 
                 {/* This is the primary interactive element (link/toggle) */}
-                <a 
-                    href={hasSubMenu ? "#" : menu.path || "/"} 
+                <NavLink 
+                    to={menu.link}
                     onClick={handleToggle}
                     // ARIA FOR THE TOGGLE ELEMENT
                     aria-expanded={hasSubMenu ? open : undefined} 
@@ -54,10 +55,10 @@ export const MobileDropdown = React.forwardRef(({ menu, isMenuOpened }, ref) => 
                     // FORWARDED REF ATTACHED TO THE FOCUSABLE ELEMENT (for use by the parent Header component)
                     ref={ref}
                     tabIndex={0} 
-                    className="cursor-pointer text-gray-800 no-underline hover:text-black "
+                    className="cursor-pointer  text-gray-800 no-underline hover:text-black "
                 >
                     {menu.name}
-                </a>
+                </NavLink>
                 
                 {hasSubMenu && (
                     <span 
@@ -99,21 +100,24 @@ export const MobileDropdown = React.forwardRef(({ menu, isMenuOpened }, ref) => 
                                         `}
                                     style={{ transitionDelay: `${open ? i * 100 : 0}ms` }}
                                 > 
-                                    <a 
-                                        href={subMenu.path || '#'} 
+                                    <NavLink 
+                                        to={subMenu.link}
                                         className="text-gray-800 no-underline hover:text-black cursor-pointer"
                                         // 🔑 APPLY NEW REF HERE: Only to the first sub-menu item (i === 0)
                                         ref={i === 0 ? firstSubMenuItemRef : null} 
                                         tabIndex={0}
                                     >
                                         {subMenu.name}
-                                    </a>
+                                    </NavLink>
                                 </li>
                             ))}
                         </ul>
                     </div>
                 </div>
             )}
+            
+             
+            
         </div>
     )
 })

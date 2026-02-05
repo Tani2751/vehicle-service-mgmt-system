@@ -11,8 +11,6 @@ import { ProcessSection } from "../components/HomePage_Section/ProcessSection";
 import TestimonialSection from "../components/HomePage_Section/TestimonialSection";
 import FAQSection from "../components/HomePage_Section/FAQSection";
 import { FooterSection } from "../components/HomePage_Section/FooterSection";
-import { NavLink } from "react-router-dom";
-import AppleStyleCarousel from "../components/AppleStyleCarousel";
 
 
 
