@@ -7,7 +7,7 @@ import { eq } from "drizzle-orm";
 
 export async function authenticate({user, req, res}) {   
     
-    console.log(user, "user");
+    console.log(user, "user - 10 ");
     
     try {   
 

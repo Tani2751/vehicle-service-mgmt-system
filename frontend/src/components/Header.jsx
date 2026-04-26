@@ -72,7 +72,7 @@ const Header = React.forwardRef(({smoother, smoothWrapper}, ref) =>  {
     gsap.set(ref.current, { y: 0 });
 
     return () => st.kill();
-  }, [smoother, ref]);
+  }, [smoother, ref, smoothWrapper]);
 
   const handleDropdown = () => {
     setOpen(prev => !prev);
@@ -80,7 +80,7 @@ const Header = React.forwardRef(({smoother, smoothWrapper}, ref) =>  {
  
   return (
     <>
-    <header ref={ref} className="z-130 flex items-center justify-between fixed top-10 left-10 right-10 md:left-10 md:right-10 lg:left:30 lg:right-30 2xl:left-100 2xl:right-100 shadow-2xl  bg-orange-400/10  backdrop-blur-lg rounded-2xl  px-6 ">
+    <header ref={ref} className="z-130 flex items-center justify-between fixed top-10 left-10 right-10 md:left-10 md:right-10 lg:left:30 lg:right-30 xl:left-40 xl:right-40 shadow-2xl  bg-orange-400/10  backdrop-blur-lg rounded-2xl  px-6 ">
         {/* Logo: change path or import as needed */}
         <NavLink  to={"/"} aria-label="Go to Homepage">
           <img src="/src/assets/logo.svg" alt="Company logo" className="w-40" />
@@ -94,9 +94,9 @@ const Header = React.forwardRef(({smoother, smoothWrapper}, ref) =>  {
                   </ul>
             </nav>    
             <div className="flex items-center justify-center">
-              <NavLink to="/login">
-                <button className="bg-primary hidden lg:block ml-5 font-semibold text-white px-3 py-1.5 rounded-[12px]  p-3 xl:px-5 xl:py-2 hover:scale-110 cursor-pointer duration-300 transition-all">
-                    {location.pathname === "/dashboard" ? "Logout" : "LogIn"}
+              <NavLink className="no-underline" to="/login">
+                <button className="bg-primary no-underline hidden text-white lg:block ml-5 font-semibold px-3 py-1.5 rounded-[12px]  p-3 xl:px-5 xl:py-2 hover:scale-110 cursor-pointer duration-300 transition-all">
+                    {location.pathname === "/dashboard" ? "Logout" : "Log In"}
                 </button>
               </NavLink>              
             </div>          

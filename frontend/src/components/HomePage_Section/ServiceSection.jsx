@@ -35,16 +35,16 @@ const ServiceSection = React.forwardRef((props, ref)  => {
  
 
   return (
-    <section  className="flex flex-col items-center justify-center  p-6">
-      <div className="flex">
-        <div className="flex flex-col justify-center items-center p-4">
-        <p className="font-heading rounded-xl bg-orange-400 font-semibold text-white px-2 py-0.5">Services</p>
-        <h2 className=" text-nowrap lg:text-5xl font-bold font-heading text-h5 mt-6">Digital bike care reimagined</h2>
-        <p className=" text-center text-[14px] font-sans lg:text-regularNormal mt-4">We transform motorcycle maintenance into a precise, transparent experience. Every touchpoint is engineered to deliver professional care with minimal friction.</p>
-        </div>
+    <section  className="flex flex-col items-center justify-center  p-4">
+      <div className="flex ">
+        <div className="flex flex-col justify-center items-center">
+          <p className="font-heading rounded-xl bg-orange-400 font-semibold text-white px-2 py-0.5">Services</p>
+          <h2 className="lg:text-5xl font-bold font-heading text-h4 text-wrap text-center mt-6">Digital bike care reimagined</h2>
+          <p className=" text-center text-regularNormal font-sans lg:text-regularNormal mt-4">We transform motorcycle maintenance into a precise, transparent experience. Every touchpoint is engineered to deliver professional care with minimal friction.</p>
+          </div>
       </div>
       
-      <div className="w-full p-4" ref={sectionRef}>
+      <div className="w-full pl-2" ref={sectionRef}>
         <AppleStyleCarousel autoplay={inView} />
       </div>
       

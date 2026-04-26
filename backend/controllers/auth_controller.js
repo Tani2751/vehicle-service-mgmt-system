@@ -55,6 +55,8 @@ export async function loginUsers(req, res, next) {
             .from(users)
             .where(eq(users.email, email))
             .limit(1);
+        console.log(userExisted, "user existed 58");
+        
         
         if (userExisted.length === 0) {           
            return next(new Error_Response("user doesn't exist!", 400))

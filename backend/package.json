@@ -12,6 +12,7 @@
     "react-email": "^5.2.3",
     "request-ip": "^3.3.0",
     "resend": "^6.7.0",
+    "tsx": "^4.21.0",
     "zod": "^4.2.1"
   },
   "name": "vsms",

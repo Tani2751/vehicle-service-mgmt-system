@@ -1,8 +1,8 @@
-import {useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Header from "../components/Header";
-import brandList, { benefitsList, section3Steps } from "../utilities";
+import brandList, { benefitsList } from "../utilities";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { SplitText } from "gsap/SplitText";
@@ -51,8 +51,6 @@ function HomePage() {
         heading: null,
         subHeading: null,
     });
-
-    console.log(serviceRef3);
     
 
     useGSAP(() => {
@@ -164,13 +162,13 @@ function HomePage() {
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-
-
+ 
             gsap.fromTo(landingRef.current,
                 {scale: 1, opacity: 1},
                 {
                     scale: 0.85,
                     opacity: 0,
+                    filter: "blur(10px)",
                     scrollTrigger: {
                         trigger: landingRef.current,
                         start: "top top",
@@ -180,6 +178,10 @@ function HomePage() {
                     ease: "power2.out"
                 }
             )
+
+            gsap.set(landingRef.current, {
+  transformOrigin: "center center"
+});
 
             gsap.fromTo(section2Ref.current, 
                 { scale: 0.85, opacity: 0},
@@ -216,7 +218,7 @@ function HomePage() {
                 ease: "power3.out",
                 scrollTrigger: {
                 trigger: section2Ref.current,
-                start: "top 30%",
+                start: "top 20%",
                 end: "center 30%",
                 scrub: true,
                 },
@@ -228,10 +230,11 @@ function HomePage() {
                     scale: 0.85,
                     opacity: 0,
                     scrollTrigger: {
-                        trigger: section2Ref.current.section,
+                        trigger: section2Ref.current,
                         start: "bottom 50%",
                         end: "bottom top",
                         scrub: true,
+                       
                     },
                     ease: "power2.out"
                 }
@@ -273,63 +276,67 @@ function HomePage() {
  
     return (
         <>
-            <div className="mx-10 pt-5 min-w-[360px] md:min-w-[630px] lg:min-w-[930px] xl:w-full xl:pl-10 ">
+            <div className="mx-10  min-w-[360px] md:min-w-[630px] lg:min-w-[930px] xl:w-full xl:pl-10 ">
                 <Header ref={headerRef} smoother={smoother} smoothWrapper={smoothWrapperRef}/>                     
             </div>
 
             <div id="smooth-wrapper" ref={smoothWrapperRef} className="overflow-x-hidden">
                 <div id="smooth-content" ref={smoothContentRef}>
-
                     <main>
-                        <section ref={landingRef} className="min-h-screen  bg-cover  bg-center flex flex-col justify-end items-center overflow-hidden"
-                            style={{ backgroundImage: `url("https://res.cloudinary.com/duxgfwaef/image/upload/v1765632714/Gemini_Generated_Image_tj7lnitj7lnitj7l_-_Copy_sveixq.jpg")` }}
-                        >   
+                        <section ref={landingRef} className="h-screen relative bg-cover bg-center flex flex-col justify-center items-center overflow-hidden">
+
+                            <video
+                                className="w-full h-full absolute inset-0  object-cover z-10"
+                                src="https://res.cloudinary.com/duxgfwaef/video/upload/v1773000343/Two_Wheeler_Servicing_Video_Generated_gbi7g9.mp4"
+                                autoPlay
+                                muted
+                                playsInline
+                                loop
+                            />
                             {/* overlay */}
-                            <div className="fixed inset-0 bg-black/20 backdrop-blur-xs z-10 "/>
-                            <div ref={heroContentRef} className=" flex items-center justify-center z-60 mb-20 lg:mb-0">
-                                <div className="font-heading ml-4 py-10 md:py-16 lg:py-24 lg:px-8 xl:px-4 flex flex-col items-center ">
-                                    <div>
-                                        <h1 ref={headingRef} className=" text-white font-bold text-center text-5xl md:text-6xl lg:text-8xl xl:text-8xl">
+                            <div className="absolute inset-0 bg-black/20 backdrop-blur-xs z-10 "/>
+                            <div ref={heroContentRef} className=" flex z-60 mb-20 lg:mb-12 absolute top-0">
+                                <div className="font-heading mt-55 sm:mt-45 md:mt-45 md:py-16 lg:py-10 mb lg:px-6 xl:px-4 flex flex-col items-center ">
+                                        <h1 ref={headingRef} className="max-w-[1300px] text-white font-bold text-center text-6xl sm:text-5xl lg:text-6xl">
                                             Simplify your{" "}
-                                            <span ref={twowheelerRef} className="relative px-2 inline-block align-bottom overflow-hidden">                         
+                                            <span ref={twowheelerRef} className="relative inline-block align-bottom overflow-hidden">                         
                                                 <span className="block text-orange-400" ref={textSpanRef}>
-                                                    two-wheeler service
+                                                    two-wheeler service  
                                                 </span>
                                                 <div 
                                                     ref={bikeContainerRef}
-                                                    className="w-30 ml-4 lg:ml-8 md:w-50 lg:w-70 absolute top-1/2 left-0 z-0 -translate-x-1/2 
+                                                    className="w-30 ml-4 lg:ml-8 md:w-50 lg:w-73 absolute top-1/2 left-0 z-0 -translate-x-1/2 
                                                     -translate-y-1/2 pointer-events-none">
                                                     <img src="src/assets/motorcycle.png"/>
                                                 </div>
                                             </span>
                                             <br className="lg:hidden" />
-                                            experience
+                                            {" "}experience
                                         </h1>
-                                    </div>
-                                    <div className="w-100 md:w-[400px] xl:w-full">
-                                        <p ref={subheadingRef} className=" text-white xl:mt-10 mt-8 text-regularNormal font-normal xl:font-medium lg:text-center xl:text-center lg:text-[14px] xl:text-mediumNormal">
-                                            <span ref={bookRef} className="font-bold text-xl text-[#FF8904]"> Book</span>, 
-                                            <span ref={trackRef} className="font-bold text-xl text-[#FF8904]"> Track</span>, and 
-                                            <span ref={maintainRef} className="font-bold text-xl text-[#FF8904]"> Maintain </span> 
-                                            your bike with ease. Get professional service at your fingertips, anytime and anywhere.                                 
+                                    <div className="w-100 sm:w-[600px] mt-10 sm:mt-8 lg:mt-0 xl:w-full text-center">
+                                        <p ref={subheadingRef} className=" text-white xl:mt-10 font-normal xl:font-medium lg:text-center xl:text-center lg:text-[14px] xl:text-mediumNormal">
+                                            <span ref={bookRef} className="font-bold text-lg  text-[#FF8904]"> Book</span>, 
+                                            <span ref={trackRef} className="font-bold text-lg  text-[#FF8904]"> Track</span>, and 
+                                            <span ref={maintainRef} className="font-bold text-lg  text-[#FF8904]"> Maintain </span> 
+                                            <span className="text-[20px] sm:text-[18px]">your bike with ease. Get professional service at your fingertips, anytime and anywhere.</span>                                 
                                         </p>
                                     </div>
                                     <div ref={btnRef}>
-                                        <button className="bg-orange-400  font-bold xl:mt-10 mt-8 px-3 py-1.5 xl:px-5 xl:py-2 rounded-[12px] xl:text-xl text-white hover:scale-110 cursor-pointer duration-300 transition-all">
+                                        <button className="bg-orange-400 text-[24px] sm:text-xl  font-bold xl:mt-12 mt-8 px-4 border-l-4 border-b-3 py-1.5 xl:px-5 xl:py-2 rounded-[12px] xl:text-xl text-white active:scale-105 hover:scale-105 cursor-pointer duration-300 transition-all">
                                             Book Now
                                         </button>
                                     </div>            
                                 </div>
                             </div> 
 
-                            <div ref={marqueRef} className="z-70 relative w-full min-h-20 overflow-hidden flex mb-20 fade-mask">
+                            <div ref={marqueRef} className="z-70 relative top-90 md:top-170 lg:top-68 w-full min-h-10 overflow-hidden flex mb-20 fade-mask">
                                 <div className="flex infinite"
                                 style={{width:"max-content"}}
                                 >
                                     <div className="inline-flex shrink-0">
                                         <ul className="flex items-center">
                                             {brandList.map((brand, i) => (
-                                                <li key={i} className="text-white text-lg lg:text-xl text-nowrap mr-15  lg:mr-20">
+                                                <li key={i} className="text-white font-semibold text-xl lg:text-xl text-nowrap mr-15  lg:mr-20">
                                                     {brand}
                                                 </li>
                                             ))}
@@ -338,7 +345,7 @@ function HomePage() {
                                     <div className="inline-flex flex-shrink: 0;">
                                         <ul className="flex items-center">
                                             {brandList.map((brand, i) => (
-                                                <li key={i} className="text-white text-lg lg:text-xl text-nowrap mr-15  lg:mr-20">
+                                                <li key={i} className="text-white font-semibold text-xl lg:text-xl text-nowrap mr-15  lg:mr-20">
                                                     {brand}
                                                 </li>
                                             ))}
@@ -358,7 +365,7 @@ function HomePage() {
                                     <p className="font-heading rounded-xl bg-orange-400 tracking-wide text-white px-2 py-0.5 font-semibold">
                                     Benefits
                                     </p>
-                                    <h2  ref={titleRef} className="text-center text-h4 lg:text-h2 font-bold font-heading leading-10 lg:leading-14 mt-6">
+                                    <h2 ref={titleRef} className="text-center text-h4 lg:text-h font-bold font-heading leading-10 lg:leading-14 mt-6">
                                         Why riders trust MotoCare for bike maintenance ?
                                     </h2>
                                     <p ref={textRef} className="text-center text-sm lg:text-regularNormal  mt-4 font-sans">
@@ -378,7 +385,7 @@ function HomePage() {
                                             <h6 className="font-heading font-semibold mb-2 text-nowrap">
                                                 {benefit.heading}
                                             </h6>
-                                            <p className="text-center font-sans text-[12px] lg:text-[14px]">
+                                            <p className="text-center font-sans text-regularNormal lg:text-[14px]">
                                                 {benefit.subHeading}
                                             </p>
                                         </div>
@@ -412,7 +419,6 @@ function HomePage() {
 
 
                     </main> 
-
                 </div>
             </div>
 

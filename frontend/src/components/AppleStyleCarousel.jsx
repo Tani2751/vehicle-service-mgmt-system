@@ -39,12 +39,13 @@ const AppleStyleCarousel = ({autoplay}) => {
 
   useEffect(() => {
     if (scrollContainerRef.current) {
-      const cardWidth = width >= 1024 ? 1300
+      const cardWidth = width >= 1024 ? 1100
                       : width >= 768 ? 700
-                      : 350
-      const gap = 40;
+                      : 380
+      const gap = 30;
       const scrollPosition = activeIndex * (cardWidth + gap);
-
+      console.log(scrollPosition);
+      
       gsap.to(scrollContainerRef.current, {
         scrollTo: {x: scrollPosition},
         duration: 1.2,
@@ -58,7 +59,7 @@ const AppleStyleCarousel = ({autoplay}) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 font-sans ">
+    <div className="min-h-screen flex flex-col items-center justify-center  font-sans ">
       
       {/* 1. Custom Animation Styles */}
       <style>{`
@@ -72,20 +73,20 @@ const AppleStyleCarousel = ({autoplay}) => {
       `}</style>
 
       {/* --- Main Display Card --- */}
-      <div className=' w-full overflow-hidden p-2'>
+      <div className=' w-full overflow-hidden '>
         <div 
           ref={scrollContainerRef}
-          className='flex gap-10 w-full mr-60  overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth py-4'
+          className='flex gap-10 w-min-screen overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth py-4'
           style={{ scrollbarWidth: 'none' }}
         >
         {section3Steps.map((step, i) => (
           <div key={i}
-            className=" min-w-[350px] md:min-w-[700px] lg:min-w-[1300px] lg:translate-x-80 md:translate-x-10 bg-[#F2F1F3] border border-white/30 rounded-2xl overflow-hidden">        
-            <div className='h-100 lg:h-158 md:h-100'>
+            className=" min-w-[370px]  md:min-w-[700px] lg:min-w-[1100px]  bg-[#F2F1F3] border border-white/30 rounded-2xl overflow-hidden">        
+            <div className='h-120 lg:h-100 md:h-80'>
               <img className='rounded-t-2xl w-full h-full object-cover' src={`${step.image}`} alt={`${step.heading}`}/>
             </div>
             <div className='p-3'>
-              <h6 className='text-orange-400 text-h6 font-heading  font-semibold px-2bg-orange-400 inline'>{step.heading}</h6>
+              <h6 className='text-white text-h6 font-heading  font-semibold px-2 bg-orange-400 inline'>{step.heading}</h6>
               <p className='font-sans text-[15px] mt-2 text-black/80 font-normal text-wrap'>{step.subHeading}</p>
             </div>
           </div>

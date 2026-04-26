@@ -9,6 +9,8 @@ import { useQuery } from "@tanstack/react-query"
 import { useAuth } from "../../Hooks/useAuth";
 import { SuperAdmin_UsersColumns } from "../../tables/UsersColumns";
 import { NavLink } from "react-router-dom";
+import { isAllOf } from "@reduxjs/toolkit";
+import { log } from "console";
 
 
 export function DashboardUsers() {
@@ -44,10 +46,11 @@ export function DashboardUsers() {
   
     
 if (!isLoading) {
-
     console.log(isLoading, data);
 }
-    
+if (error) {
+    console.log("Error:", error);
+}    
     
 
 return (
